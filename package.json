@@ -1,0 +1,19 @@
+{
+  "name": "edumgrsigninprj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "javon",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.5",
+    "angular-animate": "^1.6.5",
+    "angular-route": "^1.6.5",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.2.1",
+    "ng-file-upload": "^12.2.13"
+  }
+}
