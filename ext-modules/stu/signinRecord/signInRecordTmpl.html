@@ -1,0 +1,25 @@
+<div>
+    <p class="text-center sign-record-title">
+        <a href="#!/stuMain"><span class="glyphicon glyphicon-arrow-left" style="font-size: 20px;"></span></a>&nbsp;&nbsp;
+        课程：{{coursename}}&nbsp;&nbsp;&nbsp;{{signintime}} 签到记录</p>
+    <table class="table table-striped table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>学号</th>
+                <th>姓名</th>
+                <th>签到时间</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="record in recordList" ng-class="{1:'success',2:'warning',3:'danger'}[record.state]">
+                <td>{{$index+1}}</td>
+                <td>{{record.stuno}}</td>
+                <td>{{record.stuname}}</td>
+                <td>{{record.signtime}}</td>
+                <td>{{record.state==1?"正常":record.state==2?"迟到":"缺勤"}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
