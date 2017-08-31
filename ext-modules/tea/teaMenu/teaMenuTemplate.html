@@ -1,0 +1,9 @@
+<div class="ps-menu-area" ng-class="{'ps-menu-area-vertical':isVertical,'ps-menu-area-horizontal':!isVertical}">
+    <ul class="ps-menu" ng-transclude></ul>
+    <a class="btn br-menu-layout-btn"
+       ng-class="{'br-menu-layout-btn-horizontal':!isVertical}"
+       ng-click="toggleMenuOrientation()">
+        <span class="glyphicon"
+              ng-class="{'glyphicon-chevron-up':isVertical,'glyphicon-chevron-down':!isVertical}"></span>
+    </a>
+</div>

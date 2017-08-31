@@ -1,0 +1,109 @@
+
+.ps-menu-area {
+     position: relative;
+     background-color: #333;
+     color: #ccc;
+     padding-left: 0;
+     /*border:1px solid red;*/
+     float:left;
+ }
+
+.ps-menu-area-vertical{
+     width: 200px;
+     min-height: 100vh;
+     padding-top: 30px;
+ }
+
+.ps-menu-area-horizontal{
+     width:100%;
+     height:40px;
+}
+
+.ps-menu-area .btn:hover {
+    color: #ccc;
+}
+
+.ps-menu {
+    list-style-type: none;
+    vertical-align: top;
+    padding: 0px;
+    /*text-align: center;*/
+}
+
+.ps-menu ul {
+    display: inline;
+    list-style-type: none;
+    padding-left: 0;
+}
+.ps-menu li {
+    line-height: 3em;
+    cursor: pointer;
+}
+
+.ps-selectable-item{
+    padding-left: 35px;
+}
+
+.ps-selectable-item:hover {
+    background-color: #555;
+}
+
+.ps-noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ps-menu-icon{
+    margin-right: 10px;
+}
+
+.ps-menu-active-indicator{
+    float:right;
+    color:#ddd;
+    margin-right: -4px;
+    margin-top: 13px;
+}
+
+.br-subitem-section{
+    padding-left: 16px;
+}
+
+.br-group-indicator-left{
+    float:right;
+    margin-right: 15px;
+    margin-top: 13px;
+    color:#dddddd;
+}
+
+.br-menu-layout-btn{
+    margin:12px;
+    border:1px solid #999;
+    color:#bbb;
+    background-color: #333;
+}
+
+.br-menuitem-horizontal{
+    display: inline-block;
+    width: 165px !important;
+    margin-left: 20px;
+    margin-top: 5px;
+    line-height: 1.5em !important;
+}
+
+.br-menu-layout-btn-horizontal {
+    position: absolute;
+    right: 10px;
+    top: -9px;
+}
+
+.br-popup-menu {
+    position: absolute;
+    z-index: 1000;
+    background-color: #333;
+    width: 200px;
+    padding-left: 0;
+}
+

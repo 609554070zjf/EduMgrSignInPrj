@@ -1,0 +1,12 @@
+<li class="ps-selectable-item" ng-class="{'br-menuitem-horizontal':!isVertical()}" ng-click="toggleSubMenu();">
+    <div class="ps-noselect">
+        <span class="glyphicon glyphicon-{{icon}} ps-menu-icon"></span>
+        {{label}}
+        <span class="glyphicon glyphicon-chevron-left br-group-indicator-left"
+              ng-if = "isVertical()"
+              ng-class="{'glyphicon-chevron-down':isOpen}"></span>
+    </div>
+</li>
+<div ng-show="isOpen" class="br-subitem-section" ng-class="{'br-popup-menu': !isVertical() }">
+    <ul ng-transclude></ul>
+</div>

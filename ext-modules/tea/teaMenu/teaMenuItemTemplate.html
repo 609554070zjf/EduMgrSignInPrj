@@ -1,0 +1,8 @@
+<li class="ps-selectable-item" ng-class="{'br-menuitem-horizontal':!isVertical()}">
+    <div class="ps-noselect">
+        <span class="glyphicon glyphicon-{{icon}} ps-menu-icon"></span>
+        {{label}}
+        <span class="glyphicon glyphicon-triangle-left ps-menu-active-indicator"
+              ng-if="isActive() && isVertical()"></span>
+    </div>
+</li>
