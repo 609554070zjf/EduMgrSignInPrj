@@ -1,0 +1,36 @@
+<div class="col-sm-6 col-sm-offset-3" ng-show="!isLogined">
+<h3 class="col-sm-12 text-center">欢迎登录学生考勤系统</h3>
+<form class="form-horizontal">
+    <div class="form-group">
+        <label for="username" class="col-sm-3 control-label">用户名</label>
+        <div class="col-sm-8">
+            <input type="text" class="form-control" id="username" ng-model="username" placeholder="用户名">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-sm-3 control-label">密码</label>
+        <div class="col-sm-8">
+            <input type="password" class="form-control" id="password" ng-model="password" placeholder="密码">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-3 control-label">身份</label>
+        <div class="col-sm-8">
+            <label class="radio-inline">
+                <input type="radio" name="identify" ng-model="identify"  id="stu" value="1"> 学生
+            </label>
+            <label class="radio-inline">
+                <input type="radio" name="identify" ng-model="identify" id="tea" value="0"> 教务管理员
+            </label>
+        </div>
+    </div>
+    <div class="text-center" ng-if="errormsg">
+        <span class="login-error">{{errormsg}}</span>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-9 col-sm-offset-2">
+            <button type="button" class="btn btn-block btn-{{btnStyle}}" ng-click="loginCheck();">登录</button>
+        </div>
+    </div>
+</form>
+</div>
