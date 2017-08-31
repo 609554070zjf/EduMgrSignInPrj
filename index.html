@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="eduApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>教务考勤系统</title>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload.min.js"></script>
+    <script src="node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js"></script>
+
+
+
+    <script src="app/appModule.js"></script>
+    <script src="app/appController.js"></script>
+    <script src="ext-modules/login/loginModule.js"></script>
+    <script src="ext-modules/login/loginController.js"></script>
+    <script src="ext-modules/login/loginDirective.js"></script>
+
+    <script src="ext-modules/stu/stuModule.js"></script>
+    <script src="ext-modules/stu/stuController.js"></script>
+    <script src="ext-modules/stu/stuDirective.js"></script>
+
+    <script src="ext-modules/stu/signinRecord/signInRecordCtrl.js"></script>
+    <script src="ext-modules/stu/signinRecord/signinRecordDirective.js"></script>
+
+    <script src="ext-modules/stu/signInBtn/signInBtnCtrl.js"></script>
+    <script src="ext-modules/stu/signInBtn/signInBtnDirective.js"></script>
+
+    <script src="ext-modules/stu/stuSignInRecord/stuSignInRecordFilter.js"></script>
+    <script src="ext-modules/stu/stuSignInRecord/stuSignInRecordCtrl.js"></script>
+    <script src="ext-modules/stu/stuSignInRecord/stuSignInRecordDirective.js"></script>
+
+
+
+    <script src="ext-modules/tea/teaDashboard/teaDashboardModule.js"></script>
+    <script src="ext-modules/tea/teaMenu/teaMenuModule.js"></script>
+    <script src="ext-modules/tea/teaFramework/teaFrameworkModule.js"></script>
+    <script src="ext-modules/tea/teaFramework/teaFrameworkController.js"></script>
+    <script src="ext-modules/tea/teaFramework/teaFrameworkDirective.js"></script>
+    <script src="ext-modules/tea/teaMenu/teaMenuController.js"></script>
+    <script src="ext-modules/tea/teaMenu/teaMenuDirective.js"></script>
+    <script src="ext-modules/tea/teaMenu/teaMenuGroupDirective.js"></script>
+    <script src="ext-modules/tea/teaMenu/teaMenuItemDirective.js"></script>
+
+    <script src="ext-modules/tea/teaModule.js"></script>
+    <script src="ext-modules/tea/teaController.js"></script>
+    <script src="ext-modules/tea/teaDirective.js"></script>
+
+    <script src="ext-modules/tea/teaNewStudent/teaNewStuCtrl.js"></script>
+
+    <script src="ext-modules/updatePwd/updatePwdCtrl.js"></script>
+    <script src="ext-modules/updatePwd/updatePwdDirective.js"></script>
+
+    <link rel="stylesheet" href="ext-modules/login/loginCss.css">
+    <link rel="stylesheet" href="ext-modules/stu/stuCss.css">
+    <link rel="stylesheet" href="ext-modules/tea/teaMenu/teaMenu.css">
+    <link rel="stylesheet" href="ext-modules/tea/teaFramework/teaFramework.css">
+    <script src="app/appRouteConfig.js"></script>
+
+
+</head>
+<body ng-controller="eduCtrl">
+    <div class="container-fluid">
+        <div ng-view></div>
+    </div>
+</body>
+</html>
