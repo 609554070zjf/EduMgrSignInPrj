@@ -1,0 +1,22 @@
+<div>
+<div class="text-center">
+    <div class="stu-stuTitle">
+        <div>
+            欢迎: <a href="#!/updatePwd">{{username}}</a>
+            <button type="button" class="btn btn-link" ng-click="quitSys();">退出登录</button>
+
+        </div>
+        <div class="col-sm-10 col-sm-offset-2 col-xs-12">
+            <button class="btn btn-primary stu-signcnt col-sm-3" type="button" data-toggle="tooltip"
+                    data-placement="top" title="查看历史签到信息" ng-click="loadSignInRecordSelf();">
+                正常签到： <span class="badge">{{normalCnt}}</span>
+            </button>
+            <span class="stu-signcnt col-xs-12 col-sm-3">迟到： <span class="badge">{{lateCnt}}</span></span>
+            <span class="stu-signcnt col-xs-12 col-sm-3">缺勤： <span class="badge">{{absenceCnt}}</span></span>
+        </div>
+    </div>
+</div>
+<div class="col-xs-12 stu-course-list">
+    <sign-in-btn ng-repeat="course in courses"></sign-in-btn>
+</div>
+</div>
