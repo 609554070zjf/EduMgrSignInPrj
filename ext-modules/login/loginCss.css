@@ -1,0 +1,12 @@
+.form-horizontal{
+    margin-top:40px;
+}
+.form-group{
+    margin-top: 30px;
+}
+
+.login-error{
+    font-size: 18px;
+    color: red;
+    font-weight: bold;
+}
