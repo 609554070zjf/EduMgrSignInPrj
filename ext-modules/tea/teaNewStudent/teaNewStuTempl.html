@@ -1,0 +1,66 @@
+<div class="col-sm-6 col-sm-offset-3" ng-controller="teaNewStuCtrl">
+    <h3 class="col-sm-12 text-center">新增学生</h3>
+    <form class="form-horizontal" name="form" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="newStuNo" class="col-sm-3 control-label">学号</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="newStuNo" ng-model="newStuNo" placeholder="学号" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="newStuName" class="col-sm-3 control-label">姓名</label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" id="newStuName" ng-model="newStuName" placeholder="姓名" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label">性别</label>
+            <div class="col-sm-8">
+                <label class="radio-inline">
+                    <input type="radio" name="newStuSex" ng-model="newStuSex"  id="stu" value="M"> 男
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="newStuSex" ng-model="newStuSex" id="tea" value="F"> 女
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="newStuPassword" class="col-sm-3 control-label">密码</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="newStuPassword" ng-model="newStuPassword" placeholder="密码" required>
+            </div>
+        </div>
+        <div class="form-group">
+                <label class="col-sm-3 control-label">学生状态</label>
+            <div class="col-sm-8">
+                <label class="radio-inline">
+                    <input type="radio" name="state" ng-model="newStuState" value="1"> 在读
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="state" ng-model="newStuState" value="0"> 停学
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="file" class="col-sm-3 control-label">学生照片</label>
+            <div class="col-sm-8">
+                <div class="btn btn-primary" id="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+                     ngf-accept="'image/*'" ngf-max-size="20MB"
+                >选择文件</div>
+            </div>
+        </div>
+        <div class="text-center" ng-if="errormsg">
+            <span class="login-error">{{errormsg}}</span>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-2">
+                <button class="btn btn-block btn-primary" ng-click="saveStu();">添加</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-2">
+                <button class="btn btn-block btn-danger" ng-click="cleanForm();">清空</button>
+            </div>
+        </div>
+    </form>
+</div>
