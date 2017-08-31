@@ -1,0 +1,96 @@
+.ps-title-bar {
+    background-color: white;
+    padding: 0 20px;
+    border-bottom: 2px solid black;
+}
+
+.ps-title-area {
+    display: inline-block;
+    /*text-align: center;*/
+}
+
+.ps-logo-area{
+    text-align: center;
+}
+
+.ps-icon {
+    display: inline-block;
+    width: 150px;
+    height: 60px;
+    margin: 8px;
+    vertical-align: top;
+    /*border: 1px solid #999;*/
+}
+
+.ps-logo-title {
+    color: #111;
+    margin-top: 13px;
+    font-size: 22px;
+}
+
+.ps-logo-subtitle {
+    font-size: 13px;
+    margin-top: -3px;
+}
+
+.ps-right-side-controls{
+    line-height: 70px;
+    /*border:1px solid red;*/
+}
+
+.ps-right-side-controls > div {
+    text-align: center;
+}
+
+@media screen and (min-width: 768px){
+
+    .ps-right-side-controls > div{
+        text-align: right;
+    }
+
+    .ps-logo-area{
+        text-align: left;
+    }
+
+}
+
+/*
+  max-width;   小于等于操作
+  min-width:   大于等于操作
+*/
+@media screen and (max-width: 430px) {
+    .ps-icon{
+        display: none;
+    }
+
+    .ps-logo-title{
+        font-size: 20px;
+    }
+}
+
+.ps-collapsed-menu{
+    display: inline-block;
+    height: 100%;
+}
+
+.br-nav-button{
+    height: 40px;
+    width: 60px;
+    font-size: 26px;
+    margin-top: 10px;
+    border:1px solid #888;
+    padding:0px;
+    color:#777;
+}
+
+.br-view{
+    margin-left: 200px;
+    padding: 20px;
+    background-color: #9fff80;
+    min-height: 100vh;
+    overflow: auto;
+}
+
+.br-view-full-width{
+    margin-left: 0px;
+}
