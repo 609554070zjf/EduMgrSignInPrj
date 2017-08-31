@@ -1,0 +1,7 @@
+<button class="btn btn-lg col-xs-12 sign-btn"
+        ng-click="signIn()" ng-class="{0: 'btn-primary', 1: 'btn-success',2:'btn-warning',3:'btn-danger'}[signState]">
+    {{course.coursename}}({{course.teaname}})<br><br>
+    {{today}}&nbsp;&nbsp;<span class="beginTime">{{course.begintime}}</span>-<span class="endTime">{{course.endtime}}</span>
+    <br><br>
+    {{state}}
+</button>
