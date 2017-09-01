@@ -1,0 +1,12 @@
+.tea-stumgr-page{
+    cursor: pointer;
+}
+
+.tea-stumgr-page:hover{
+    color: blue;
+}
+
+.tea-stumgr-delete{
+    font-weight: bold;
+    color:red;
+}
