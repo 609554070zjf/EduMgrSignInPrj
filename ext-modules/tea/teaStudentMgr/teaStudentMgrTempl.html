@@ -1,0 +1,154 @@
+<div ng-controller="teaStudentCtrl">
+    <h3 class="text-center">学生信息</h3>
+    <div>
+        <form class="col-xs-12 qryForm">
+            <div class="col-xs-2">
+                <input type="text" class="form-control" id="qryStuNo" ng-model="qryStuNo" placeholder="学号">
+            </div>
+            <div class="col-xs-2">
+                <input type="text" class="form-control" id="qryStuName" ng-model="qryStuName" placeholder="学生姓名">
+            </div>
+            <div class="col-xs-1">
+                <button type="submit" class="btn btn-default" ng-click="combineSearch();">查询<span class="glyphicon glyphicon-search"></span></button>
+            </div>
+        </form>
+    </div>
+    <table class="table table-hover table-condensed table-bordered" style="background-color: #fff; margin-top: 70px;">
+        <thead>
+        <tr>
+            <th>序号</th>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>性别</th>
+            <th>照片</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody><!-- | filter:{year:qryYear}-->
+        <tr ng-repeat="student in studentList" ng-class="{0:'warning'}[student.state]">
+            <td>{{$index+1}}</td>
+            <td>{{student.stuno}}</td>
+            <td>{{student.stuname}}</td>
+            <td>{{student.sex=="M"?"男":"女"}}</td>
+            <td></td><!--<img src="{{student.picname}}">-->
+            <td>{{student.state==1?"正常":"停学"}}</td>
+            <td>
+                <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal" ng-click="preUpdate(student);">修改</button>
+                <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal" ng-click="preDelete(student)">删除</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="text-right">
+        <span>当前：第 {{pageNo}} 页</span>&nbsp;&nbsp;&nbsp;
+        <span>共 {{totalPage}} 页</span>&nbsp;&nbsp;&nbsp;
+        <span ng-if="!isFirst">
+            <span class="tea-stumgr-page" ng-click="loadPage(initUrl,1);">[首页]</span>&nbsp;&nbsp;&nbsp;
+            <span class="tea-stumgr-page" ng-click="toPageByPageNo(pageNo-1);">[上一页]</span>&nbsp;&nbsp;&nbsp;
+        </span>
+        <span ng-if="!isLast">
+            <span class="tea-stumgr-page" ng-click="loadPage(linkObj.next,pageNo+1);">[下一页]</span>&nbsp;&nbsp;&nbsp;
+            <span class="tea-stumgr-page" ng-click="loadPage(linkObj.last,totalPage);">[末页]</span>&nbsp;&nbsp;&nbsp;
+        </span>
+        <input type="number" ng-model="pageNum" style="width: 50px;">&nbsp;&nbsp;&nbsp;
+        <button class="btn btn-primary btn-xs" ng-click="toPageByPageNo(pageNum);">跳转</button>
+    </div>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" >修改学生信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" name="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学号</label>
+                            <div class="col-sm-8">
+                                {{updateStuNo}}
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="updateStuName" class="col-sm-3 control-label">姓名</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="updateStuName" ng-model="updateStuName" placeholder="姓名" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">性别</label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" name="updateStuSex" ng-model="updateStuSex"  id="stu" value="M"> 男
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="updateStuSex" ng-model="updateStuSex" id="tea" value="F"> 女
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="updateStuPassword" class="col-sm-3 control-label">密码</label>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" id="updateStuPassword" ng-model="updateStuPassword" placeholder="密码" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学生状态</label>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" name="state" ng-model="updateStuState" value="1"> 在读
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="state" ng-model="updateStuState" value="0"> 停学
+                                </label>
+                            </div>
+                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label for="file" class="col-sm-3 control-label">学生照片</label>-->
+                            <!--<div class="col-sm-8">-->
+                                <!--<div class="btn btn-primary" id="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"-->
+                                     <!--ngf-accept="'image/*'" ngf-max-size="20MB"-->
+                                <!--&gt;选择文件</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <div class="text-center" ng-if="errormsg">
+                            <span class="login-error">{{errormsg}}</span>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-block btn-primary" ng-click="updateStu();">确认修改</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹出删除窗口 -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">删除学生信息</h4>
+                </div>
+                <div class="modal-body">
+                    您确定删除学号为
+                    <span class="tea-stumgr-delete">{{delete_stuno}}</span>
+                    <span>的学生：</span>
+                    <span class="tea-stumgr-delete">{{delete_stuname}}</span>
+                    吗？
+                </div>
+                <div class="modal-footer">
+                    <button type=button class="btn btn-primary" ng-click="removeStu(delete_stuno)">删除</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
