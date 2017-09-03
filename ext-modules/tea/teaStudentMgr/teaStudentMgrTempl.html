@@ -31,7 +31,7 @@
             <td>{{student.stuno}}</td>
             <td>{{student.stuname}}</td>
             <td>{{student.sex=="M"?"男":"女"}}</td>
-            <td></td><!--<img src="{{student.picname}}">-->
+            <td>{{student.picname}}</td>
             <td>{{student.state==1?"正常":"停学"}}</td>
             <td>
                 <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal" ng-click="preUpdate(student);">修改</button>

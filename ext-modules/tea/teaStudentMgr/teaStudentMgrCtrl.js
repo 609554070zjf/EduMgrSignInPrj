@@ -7,7 +7,7 @@
 angular.module("teaFramework")
     .controller("teaStudentCtrl",["$scope",function($scope){
 
-        var pageSize = 10;
+        var pageSize = 8;
         $scope.pageNo = 1;
         $scope.initUrl = "http://localhost/v1/loadStudents?page=1&pagesize="+pageSize;
         // $scope.initUrl = "http://localhost/v1/loadStudents?page="+pageNo+"&pagesize="+pageSize;
