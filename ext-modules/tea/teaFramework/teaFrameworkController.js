@@ -10,7 +10,9 @@ angular.module("teaFramework").controller("teaFrameworkController",
 
 
             //================================================================================
-            $scope.routePath = "ext-modules/tea/teaNewStudent/teaNewStuTempl.html";
+            // $scope.routePath = "ext-modules/tea/teaNewStudent/teaNewStudentTempl.html";
+            // $scope.routePath = "ext-modules/tea/teaStudentMgr/teaStudentMgrTempl.html";
+            $scope.routePath = "ext-modules/tea/teaCourseMgr/teaCourseMgrTempl.html";
             $scope.isMenuButtonVisible = true;
             $scope.isMenuVisible = true;
 
@@ -23,9 +25,7 @@ angular.module("teaFramework").controller("teaFrameworkController",
 
             $scope.$on('br-menu-item-selected-event', function (evt, data) {
                 console.log(data);
-                // $scope.routePath = "ext-modules/tea/"+ data.route +".html";
-                $scope.routePath = "ext-modules/tea/teaNewStudent/teaNewStuTempl.html";
-                // teaNewStudent/teaNewStuTempl
+                $scope.routePath = "ext-modules/tea/" + data.route + "/" + data.route+ "Templ.html";
             });
 
 
@@ -52,6 +52,15 @@ angular.module("teaFramework").controller("teaFrameworkController",
             $timeout(function(){
                 checkWidth();
             },0);
+
+
+            $scope.quitSys = function(){
+                if($window.confirm("您确定要退出系统吗?")){
+                    sessionStorage.user = "";
+                    $location.path("/login");
+                }
+
+            };
 
         }
     ]);
