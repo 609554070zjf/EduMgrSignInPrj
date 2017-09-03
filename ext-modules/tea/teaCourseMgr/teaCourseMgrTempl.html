@@ -1,0 +1,116 @@
+<div ng-controller="teaNewCourseCtrl">
+    <div ng-if="isVisable">
+        <button class="btn btn-primary col-sm-offset-11" ng-click="toggleNewCourse();">课程列表</button>
+        <div class="col-sm-6 col-sm-offset-3" >
+            <h3 class="col-sm-12 text-center">新增课程</h3>
+            <form class="form-horizontal" name="form">
+                <div class="form-group">
+                    <label for="newCourseNo" class="col-sm-3 control-label">课程号</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="newCourseNo" ng-model="newCourseNo" placeholder="课程号" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newCourseName" class="col-sm-3 control-label">课程名称</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="newCourseName" ng-model="newCourseName" placeholder="课程名称" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newCourseTeaName" class="col-sm-3 control-label">教师姓名</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="newCourseTeaName" ng-model="newCourseTeaName" placeholder="教师姓名" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newCourseBeginTime" class="col-sm-3 control-label">上课时间</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="newCourseBeginTime" ng-model="newCourseBeginTime"
+                               placeholder="上课时间(HH:MM)" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="newCourseEndTime" class="col-sm-3 control-label">下课时间</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="newCourseEndTime" ng-model="newCourseEndTime"
+                               placeholder="下课时间(HH:MM)" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="classday" class="col-sm-3 control-label">每周上课日期</label>
+                    <div class="col-sm-8">
+                        <select name="classday" id="classday" class="form-control" ng-model="classday"
+                                ng-options="day.key as day.value for day in week">
+                        </select>
+                    </div>
+                </div>
+                <div class="text-center" ng-if="errormsg">
+                    <span class="login-error">{{errormsg}}</span>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-2">
+                        <button class="btn btn-block btn-primary" ng-click="saveCourse();">添加</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-2">
+                        <button class="btn btn-block btn-danger" ng-click="cleanForm();">清空</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div ng-if="!isVisable">
+        <button class="btn btn-primary col-sm-offset-11" ng-click="toggleNewCourse();">新增课程</button>
+        <div>
+            <table class="table table-hover table-condensed table-bordered" style="background-color: #fff; margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>课程编号</th>
+                        <th>课程名称</th>
+                        <th>教师姓名</th>
+                        <th>上课日期</th>
+                        <th>上课时间</th>
+                        <th>下课时间</th>
+                        <td>签到密码</td>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="course in courseList">
+                        <td>{{$index+1}}</td>
+                        <td>{{course.courseno}}</td>
+                        <td>{{course.coursename}}</td>
+                        <td>{{course.teaname}}</td>
+                        <td>
+                            {{course.classday==0?"星期天":course.classday==1?"星期一":course.classday==2?"星期二":
+                            course.classday==3?"星期三":course.classday==4?"星期四":course.classday==5?"星期五":"星期六"}}
+                        </td>
+                        <td>{{course.begintime}}</td>
+                        <td>{{course.endtime}}</td>
+                        <td>{{course.password}}</td>
+                        <td>
+                            <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal" ng-click="preUpdate(student);">修改</button>
+                            <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal" ng-click="preDelete(student)">删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="text-right">
+                <span>当前：第 {{pageNo}} 页</span>&nbsp;&nbsp;&nbsp;
+                <span>共 {{totalPage}} 页</span>&nbsp;&nbsp;&nbsp;
+                <span ng-if="!isFirst">
+                <span class="tea-stumgr-page" ng-click="loadPage(initUrl,1);">[首页]</span>&nbsp;&nbsp;&nbsp;
+                <span class="tea-stumgr-page" ng-click="toPageByPageNo(pageNo-1);">[上一页]</span>&nbsp;&nbsp;&nbsp;
+            </span>
+                    <span ng-if="!isLast">
+                <span class="tea-stumgr-page" ng-click="loadPage(linkObj.next,pageNo+1);">[下一页]</span>&nbsp;&nbsp;&nbsp;
+                <span class="tea-stumgr-page" ng-click="loadPage(linkObj.last,totalPage);">[末页]</span>&nbsp;&nbsp;&nbsp;
+            </span>
+                    <input type="number" ng-model="pageNum" style="width: 50px;">&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-primary btn-xs" ng-click="toPageByPageNo(pageNum);">跳转</button>
+                </div>
+            </div>
+    </div>
+</div>
