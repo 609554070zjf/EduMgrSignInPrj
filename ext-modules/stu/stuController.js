@@ -9,10 +9,14 @@ angular.module("stu")
     .controller("stuCtrl",["$scope","$rootScope","$location","$window",function($scope,$rootScope,$location,$window){
 
         (function () {
-            console.log("123"+sessionStorage.user);
+            // console.log("123"+sessionStorage.user);
             console.log(!sessionStorage.user);
             if(!sessionStorage.user){
                 $location.path("/login");
+            }
+            else{
+                $("[data-toggle='tooltip']").tooltip();
+                getInitSignCnt(sessionStorage.user);
             }
         })();
 
@@ -41,8 +45,6 @@ angular.module("stu")
 
 
 
-        $("[data-toggle='tooltip']").tooltip();
-        getInitSignCnt(sessionStorage.user);
 
         /**
          * 根据星期几来查找课程列表
@@ -75,7 +77,6 @@ angular.module("stu")
          * @param signin
          */
         function updateSignCntTitle(signin){
-
             $scope.$applyAsync(function() {
                 $scope.absenceCnt = signin.absencecnt;
                 $scope.normalCnt = signin.normalcnt;

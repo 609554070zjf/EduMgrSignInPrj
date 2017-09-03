@@ -31,23 +31,56 @@ angular.module("stu")
                 var courseEndTime = scope.setCourseTime(endTime);
 
 
-                //点击签到按钮触发的事件
-                scope.signIn = function(){
+                /**
+                 * 打开签到密码模态框
+                 */
+                scope.openSignInPwd = function(){
+                    if(scope.signState === -1){
+                        alert("签到未开始！");
+                        return;
+                    }
                     var date = new Date();
                     var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
                     var hourseStr = date.getHours()+":"+date.getMinutes();
                     var dateTime = date.getTime();
-
                     if(isSignIned){
                         var doc = {
-                                url:"/signRecordByCourse",
-                                courseno: scope.course.courseno,
-                                signintime: dateStr
-                            };
+                            url:"/signRecordByCourse",
+                            courseno: scope.course.courseno,
+                            signintime: dateStr
+                        };
                         ctrl.setRoute(doc);
                         return;
                     }
                     else isSignIned = true;
+
+                    $('#passwordModal').modal("show");
+                };
+
+                /**
+                 * 签到密码验证
+                 * @param password
+                 * @returns {boolean}
+                 */
+                scope.checkSignInPwd = function(password){
+                    if(password === scope.signPwd){
+                        $('#passwordModal').modal("hide");
+                        return true;
+                    }
+                };
+
+                //输入签到密码后点击签到按钮触发的事件
+                scope.signIn = function(){
+
+                    if(!scope.checkSignInPwd(scope.course.password)){
+                        alert("签到密码错误！签到失败！");
+                        return;
+                    }
+
+                    var date = new Date();
+                    var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+                    var hourseStr = date.getHours()+":"+date.getMinutes();
+                    var dateTime = date.getTime();
 
                     //当前点击的button对象
                     var thisBtn = el;
@@ -200,6 +233,8 @@ angular.module("stu")
                             console.log(data);
                         });
                 }
+
+
 
             }
         }

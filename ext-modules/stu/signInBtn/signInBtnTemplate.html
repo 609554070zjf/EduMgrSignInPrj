@@ -1,7 +1,29 @@
-<button class="btn btn-lg col-xs-12 sign-btn"
-        ng-click="signIn()" ng-class="{0: 'btn-primary', 1: 'btn-success',2:'btn-warning',3:'btn-danger'}[signState]">
+<div>
+<button class="btn btn-lg col-xs-12 sign-btn" style="margin-top: 15px;"
+        ng-click="openSignInPwd()" ng-class="{0: 'btn-primary', 1: 'btn-success',2:'btn-warning',3:'btn-danger'}[signState]">
     {{course.coursename}}({{course.teaname}})<br><br>
     {{today}}&nbsp;&nbsp;<span class="beginTime">{{course.begintime}}</span>-<span class="endTime">{{course.endtime}}</span>
     <br><br>
     {{state}}
 </button>
+
+<!-- Modal -->
+<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">输入签到密码</h4>
+            </div>
+            <div class="modal-body">
+                签到密码：
+                <input type="text" ng-model="signPwd">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="signIn();">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
