@@ -42,7 +42,6 @@ angular.module("eduApp")
                 url:"/teaMain",
                 config:{
                     template:"<tea-main></tea-main>"
-                    //template:'<tea-framework app-title="酒店房间管理系统" sub-title="专业 专心 专注" logo-img="images/brsc-logo.gif"></tea-framework>'
                 }
             }
         ];
@@ -52,5 +51,5 @@ angular.module("eduApp")
             $routeProvider.when(route.url,route.config);
         });
 
-        $routeProvider.otherwise({redirectTo:"/teaMain"});
+        $routeProvider.otherwise({redirectTo:"/login"});
     }]);

@@ -64,6 +64,7 @@ angular.module("login")
                             console.log("登录成功");
                             sessionStorage.user = user.teano;
                             sessionStorage.username = user.teaname;
+                            $location.path("/teaMain");
                             return ;
                         }
                     }
