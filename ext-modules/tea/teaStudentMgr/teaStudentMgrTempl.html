@@ -20,7 +20,7 @@
             <th>学号</th>
             <th>姓名</th>
             <th>性别</th>
-            <th>照片</th>
+            <!--<th>照片</th>-->
             <th>状态</th>
             <th>操作</th>
         </tr>
@@ -31,9 +31,10 @@
             <td>{{student.stuno}}</td>
             <td>{{student.stuname}}</td>
             <td>{{student.sex=="M"?"男":"女"}}</td>
-            <td>{{student.picname}}</td>
+            <!--<td>{{student.picname}}</td>-->
             <td>{{student.state==1?"正常":"停学"}}</td>
             <td>
+                <button class="btn btn-primary btn-xs" ng-click="infoStudent(student);">详细资料</button>
                 <button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#updateModal" ng-click="preUpdate(student);">修改</button>
                 <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#deleteModal" ng-click="preDelete(student)">删除</button>
             </td>

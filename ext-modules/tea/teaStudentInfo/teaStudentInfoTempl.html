@@ -1,0 +1,16 @@
+
+<div ng-controller="teaStudentInfoCtrl">
+    <button class="btn btn-primary col-sm-offset-11" ng-click="backToStuMgr();">学生列表</button>
+    <div class="tea-stu-info">
+        <p>学生学号：{{student.stuno}}</p>
+        <p>学生姓名：{{student.stuname}}</p>
+        <p>学生性别：{{student.sex=="M"?"男":"女"}}</p>
+        <p>学生状态：{{student.state==1?"正常":"停学"}}</p>
+        <p>正常签到次数：{{signInCnt.normalcnt}}</p>
+        <p>迟到签到次数：{{signInCnt.latecnt}}</p>
+        <p>缺勤签到次数：<span style="color:red;">{{signInCnt.absencecnt}}</span></p>
+        <div class="tea-stu-info-pic">
+            <img src="http://localhost/upload/student/{{student.picname}}" alt="" width="270px" height="400px">
+        </div>
+    </div>
+</div>

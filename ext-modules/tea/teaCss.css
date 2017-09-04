@@ -11,7 +11,19 @@
     color:red;
 }
 
-/*.tea-coursemgr-toggle-btn{*/
-    /*position: absolute;*/
-    /*right:30px;*/
-/*}*/
+.tea-stu-info{
+    font-size: 20px;
+    font-weight: bold;
+    margin-left:30%;
+    position: relative;
+}
+
+.tea-stu-info>p{
+    margin-top:25px;
+}
+
+.tea-stu-info-pic{
+    position: absolute;
+    top: -20px;
+    left: 40%;
+}

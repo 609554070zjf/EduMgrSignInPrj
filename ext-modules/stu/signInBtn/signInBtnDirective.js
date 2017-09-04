@@ -31,18 +31,15 @@ angular.module("stu")
                 var courseEndTime = scope.setCourseTime(endTime);
 
 
-                /**
-                 * 打开签到密码模态框
-                 */
-                scope.openSignInPwd = function(){
-                    if(scope.signState === -1){
-                        alert("签到未开始！");
-                        return;
-                    }
+
+                //输入签到密码后点击签到按钮触发的事件
+                scope.signIn = function(){
+
                     var date = new Date();
                     var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
                     var hourseStr = date.getHours()+":"+date.getMinutes();
                     var dateTime = date.getTime();
+
                     if(isSignIned){
                         var doc = {
                             url:"/signRecordByCourse",
@@ -54,52 +51,37 @@ angular.module("stu")
                     }
                     else isSignIned = true;
 
-                    $('#passwordModal').modal("show");
-                };
 
-                /**
-                 * 签到密码验证
-                 * @param password
-                 * @returns {boolean}
-                 */
-                scope.checkSignInPwd = function(password){
-                    if(password === scope.signPwd){
-                        $('#passwordModal').modal("hide");
-                        return true;
-                    }
-                };
-
-                //输入签到密码后点击签到按钮触发的事件
-                scope.signIn = function(){
-
-                    if(!scope.checkSignInPwd(scope.course.password)){
-                        alert("签到密码错误！签到失败！");
+                    var password = prompt("请输入签到密码：");
+                    console.log(password+"  "+scope.course.password);
+                    if(password == null){
                         return;
                     }
+                    else if(password != scope.course.password){
+                        alert("签到密码错误！签到失败！");
+                            return;
+                    }
 
-                    var date = new Date();
-                    var dateStr = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
-                    var hourseStr = date.getHours()+":"+date.getMinutes();
-                    var dateTime = date.getTime();
+
 
                     //当前点击的button对象
                     var thisBtn = el;
                     if(dateTime >= (courseBeginTime.getTime()-15*60*1000) && dateTime <= courseBeginTime.getTime()){
-                        // console.log("正常");
+                        console.log("正常");
                         scope.signState = 1;
                         // thisBtn.attr("disabled","disabled");
                         scope.state = "已签到（正常），签到时间："+hourseStr;
                         addSignCnt(stuno,"s");
                     }
                     else if(dateTime > courseBeginTime.getTime() && dateTime <= (courseBeginTime.getTime()+60*60*1000)){
-                        // console.log("迟到");
+                        console.log("迟到");
                         // thisBtn.attr("disabled","disabled");
                         scope.signState = 2;
                         scope.state = "已签到（迟到），签到时间："+hourseStr;
                         addSignCnt(stuno,"l");
                     }
                     else{
-                        // console.log("缺勤");
+                        console.log("缺勤");
                         return;
                     }
                     saveSignRecord(stuno,stuname,dateStr,hourseStr,scope.signState);

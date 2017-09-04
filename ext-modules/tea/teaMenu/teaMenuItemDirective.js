@@ -43,5 +43,5 @@ angular.module("teaMenu")
                 });
             }
         };
-    })
+    });
 

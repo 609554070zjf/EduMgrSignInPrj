@@ -5,7 +5,7 @@
 "use strict";
 
 angular.module("teaFramework")
-    .controller("teaStudentCtrl",["$scope",function($scope){
+    .controller("teaStudentCtrl",["$scope","$rootScope",function($scope,$rootScope){
 
         var pageSize = 8;
         $scope.pageNo = 1;
@@ -159,6 +159,11 @@ angular.module("teaFramework")
                     loadStudents($scope.initUrl,1);
                 }
             });
+        }
+
+        $scope.infoStudent = function(student){
+            $rootScope.infoStudent = student;
+            $rootScope.$broadcast('br-menu-item-selected-event',{ route: "teaStudentInfo" });
         }
 
     }]);
